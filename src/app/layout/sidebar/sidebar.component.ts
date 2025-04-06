@@ -8,7 +8,7 @@ type MenuKey = 'student'; // Add more like 'staff' | 'fees' as needed
 })
 export class SidebarComponent {
 isCollapsed=true;
-ismenuOpened=false;
+
 
 
 isMenuOpen: Record<MenuKey, boolean> = {
@@ -18,8 +18,17 @@ isMenuOpen: Record<MenuKey, boolean> = {
 
   toggleMenu(menu: MenuKey): void {
     this.isMenuOpen[menu] = !this.isMenuOpen[menu];
+    if(this.isMenuOpen[menu]){
+      this.isCollapsed=false;
+    }
   }
   toggelSidebar(){
   this.isCollapsed=!this.isCollapsed;
+  if (this.isCollapsed) {
+    // Collapse all open nested menus when sidebar is collapsed
+    for (let key in this.isMenuOpen) {
+      this.isMenuOpen[key as keyof typeof this.isMenuOpen] = false;
+    }
+  }
   }
 }
