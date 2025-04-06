@@ -8,7 +8,28 @@
     <!-- Right section -->
     <div class="flex items-center space-x-4">
       <input type="text" placeholder="Search" class="border px-3 py-1 rounded text-sm" />
-      <img src="https://i.pravatar.cc/40" alt="User" class="w-10 h-10 rounded-full border" />
+      <div class="relative">
+        <img
+          src="https://i.pravatar.cc/40?img=3"
+          alt="Profile"
+          class="w-10 h-10 rounded-full cursor-pointer border-2 border-blue-600"
+          (click)="toggleDropdown()"
+        />
+    
+        <!-- Dropdown menu -->
+        <div
+          *ngIf="isDropdownOpen"
+          class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10"
+        >
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700">
+            <i class="bi bi-gear mr-2"></i> Settings
+          </a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700">
+            <i class="bi bi-box-arrow-right mr-2"></i> Logout
+          </a>
+        </div>
+      </div>
+    
     </div>
   </header>
   
