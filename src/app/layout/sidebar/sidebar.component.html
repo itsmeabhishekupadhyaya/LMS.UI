@@ -7,7 +7,8 @@
 >
   <!-- Toggle Button -->
   <div class="flex justify-center items-center h-16">
-    <button (click)="toggelSidebar()" class="w-full bg-gray-800 text-white rounded p-2 hover:bg-gray-700">
+    <button
+     (click)="toggelSidebar()" class="w-full bg-gray-800 text-white rounded p-2 hover:bg-gray-700">
       <i class="bi bi-list text-xl block mx-auto"></i>
     </button>
   </div>
@@ -16,16 +17,49 @@
 
   <!-- Nav Items -->
   <nav class="flex justify-center flex-col gap-3 text-sm">
-    <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-700 rounded transition-all">
+    <a href="#"
+    data-bs-toggle="tooltip" 
+    data-bs-placement="right" 
+    title="Home"
+     class="flex items-center px-3 py-2 hover:bg-gray-700 rounded transition-all">
       <i class="bi bi-house-door-fill text-lg"></i>
       <span *ngIf="!isCollapsed" class="ml-3">Home</span>
     </a>
 
-    <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-700 rounded transition-all">
-        <i class="bi bi-house-door-fill text-lg"></i>
-        <span *ngIf="!isCollapsed" class="ml-3">Students</span>
+    <a href="#" 
+    (click)="toggleMenu('student')"
+    data-bs-toggle="tooltip" 
+    data-bs-placement="right" 
+    title="Students"
+        class="flex items-center px-3 py-2 hover:bg-gray-700 rounded transition-all">
+        <i class="bi bi-person-fill text-lg"></i>
+        <span *ngIf="!isCollapsed" class="ml-3">Students</span><span>
+        <i [ngClass]="{'bi bi-chevron-down': !isMenuOpen.student, 'bi bi-chevron-up': isMenuOpen.student}"></i>
+    </span>
     </a>
-    <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-700 rounded transition-all">
+        <!-- Child Items -->
+        <ul
+        *ngIf="isMenuOpen.student"
+        class="ml-6 mt-1 space-y-1">
+        <li>
+          <a routerLink="/students/add"
+             class="block px-4 py-2 text-sm text-white hover:bg-gray-600 rounded">
+            ➕ Add Student
+          </a>
+        </li>
+        <li>
+          <a routerLink="/students/list"
+             class="block px-4 py-2 text-sm text-white hover:bg-gray-600 rounded">
+            📋 Student List
+          </a>
+        </li>
+      </ul>
+    
+    <a href="#" 
+    data-bs-toggle="tooltip" 
+    data-bs-placement="right" 
+    title="Attendance"
+    class="flex items-center px-3 py-2 hover:bg-gray-700 rounded transition-all">
       <i class="bi bi-check2-square text-lg"></i>
       <span *ngIf="!isCollapsed" class="ml-3">Attendance</span>
     </a>
