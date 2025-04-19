@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import {MatButtonModule} from '@angular/material/button';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { HomeComponent } from './layout/home/home.component'
+import { HomeComponent } from './layout/home/home.component';
+import { StudentsModule } from './students/students.module';
+
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { HomeComponent } from './layout/home/home.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    StudentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
